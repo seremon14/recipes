@@ -33,7 +33,7 @@
 
     <include
         android:id="@+id/emptyDataParent"
-        layout="@layout/item_empty_dataset"
+        layout="@layout/empty_dataset"
         android:layout_width="match_parent"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

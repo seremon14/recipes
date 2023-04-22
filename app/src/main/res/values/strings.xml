@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Recetas</string>
-    <string name="buscar">Buscar</string>
+    <string name="search">Buscar</string>
     <string name="empty_results_description">No se encontraron resultados</string>
     <string name="empty_results_title">¡Upsssssss!</string>
+    <string name="ingredients">Ingredientes</string>
+    <string name="steps">Pasos</string>
+    <string name="example_name">Sopa de cebolla</string>
+    <string name="example_description">Descripcion de la sopa de cebolla, una delicia culinaria francesa</string>
+
 </resources>

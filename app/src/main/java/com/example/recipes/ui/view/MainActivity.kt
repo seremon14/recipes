@@ -1,5 +1,6 @@
 package com.example.recipes.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -40,8 +41,13 @@ class MainActivity : AppCompatActivity() {
             recipeArrayList = recipes
             initRecyclerView()
         })
+
         recipeViewModel.isLoading.observe(this, Observer {
             binding.progress.isVisible = it
+        })
+
+        recipeViewModel.navigateToDetail.observe(this, Observer { recipe ->
+            startActivity(DetailActivity.getStartIntent(this, recipe))
         })
 
         binding.srContainer.setOnRefreshListener {
@@ -93,10 +99,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun onItemSelected(recipe: Recipe) {
         //Go to detail
-        Toast.makeText(
-            this,
-            recipe.name,
-            Toast.LENGTH_SHORT
-        ).show()
+        recipeViewModel.navigateToDetail.postValue(recipe)
     }
 }

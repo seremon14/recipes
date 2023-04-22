@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipes.databinding.ItemRecipeListBinding
 import com.example.recipes.domain.model.Recipe
+import com.example.recipes.ui.view.util.loadImage
 
 class RecipesViewHolder(inflate: View) : RecyclerView.ViewHolder(inflate) {
 
@@ -13,7 +14,7 @@ class RecipesViewHolder(inflate: View) : RecyclerView.ViewHolder(inflate) {
     fun render(recipe: Recipe, onClickListener: (Recipe) -> Unit) {
         binding.tvTitle.text = recipe.name
         binding.tvDescription.text = recipe.description
-        Glide.with(binding.ivImage.context).load(recipe.image).into(binding.ivImage)
+        binding.ivImage.loadImage(recipe.image)
         itemView.setOnClickListener { onClickListener(recipe) }
     }
 }

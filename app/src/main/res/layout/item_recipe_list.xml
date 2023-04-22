@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20sp"
-            tools:text= "texto ejemplo de título"
+            tools:text="@string/example_name"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivImage" />
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:maxWidth="200dp"
-            tools:text = "texto ejemplo de descripción"
+            tools:text="@string/example_description"
             android:ellipsize="end"
             android:inputType="none"
             android:maxLines="4"

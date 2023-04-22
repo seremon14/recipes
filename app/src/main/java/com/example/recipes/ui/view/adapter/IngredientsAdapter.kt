@@ -4,18 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipes.R
-import com.example.recipes.domain.model.Step
+import com.example.recipes.domain.model.Ingredient
 
-class StepsAdapter(private val steps: List<Step>): RecyclerView.Adapter<StepsViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StepsViewHolder {
+class IngredientsAdapter(private val ingredients: ArrayList<Ingredient>): RecyclerView.Adapter<IngredientsViewHolder>(){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientsViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return StepsViewHolder(layoutInflater.inflate(R.layout.item_steps_list, parent, false))
+        return IngredientsViewHolder(layoutInflater.inflate(R.layout.item_ingredients_list, parent, false))
     }
 
-    override fun onBindViewHolder(holder: StepsViewHolder, position: Int) {
-        val item = steps[position]
+    override fun onBindViewHolder(holder: IngredientsViewHolder, position: Int) {
+        val item = ingredients[position]
         holder.render(item)
     }
 
-    override fun getItemCount(): Int = steps.size
+    override fun getItemCount(): Int = ingredients.size
 }

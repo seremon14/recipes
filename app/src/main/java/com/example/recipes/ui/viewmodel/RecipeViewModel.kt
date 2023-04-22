@@ -15,6 +15,7 @@ class RecipeViewModel @Inject constructor(
 ): ViewModel(){
     val recipeModel = MutableLiveData<List<Recipe>>()
     val isLoading = MutableLiveData<Boolean>()
+    val navigateToDetail = MutableLiveData<Recipe>()
 
     fun onCreate() {
         viewModelScope.launch {
