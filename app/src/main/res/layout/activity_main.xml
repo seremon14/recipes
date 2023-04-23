@@ -7,7 +7,7 @@
     tools:context=".ui.view.MainActivity">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srContainer"
+        android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent" >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecipesList"
+            android:id="@+id/recyclerRecipes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -33,7 +33,7 @@
 
     <include
         android:id="@+id/emptyDataParent"
-        layout="@layout/empty_dataset"
+        layout="@layout/layout_empty_dataset"
         android:layout_width="match_parent"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

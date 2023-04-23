@@ -18,4 +18,8 @@ class IngredientsAdapter(private val ingredients: ArrayList<Ingredient>): Recycl
     }
 
     override fun getItemCount(): Int = ingredients.size
+
+    override fun registerAdapterDataObserver(observer: RecyclerView.AdapterDataObserver) {
+        super.registerAdapterDataObserver(observer)
+    }
 }

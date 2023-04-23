@@ -8,7 +8,8 @@ data class Recipe(
     val description: String,
     val ingredients: ArrayList<Ingredient>?,
     val steps: ArrayList<Step>?,
-    val location: String?,
+    val latitude: String?,
+    val longitude: String?
 )
 
 fun RecipeModel.toDomain() = Recipe(
@@ -17,5 +18,6 @@ fun RecipeModel.toDomain() = Recipe(
     description,
     ingredients?.let { arrayList -> ArrayList(arrayList.map { it.toDomain() }) },
     steps?.let { arrayList -> ArrayList(arrayList.map { it.toDomain() }) },
-    location
+    latitude,
+    longitude
 )

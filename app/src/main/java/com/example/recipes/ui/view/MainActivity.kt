@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(DetailActivity.getStartIntent(this, recipe))
         })
 
-        binding.srContainer.setOnRefreshListener {
-            binding.srContainer.isRefreshing = false
+        binding.swipeContainer.setOnRefreshListener {
+            binding.swipeContainer.isRefreshing = false
             recipeViewModel.onCreate()
         }
     }
@@ -90,10 +90,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        binding.rvRecipesList.layoutManager = LinearLayoutManager(this)
+        binding.recyclerRecipes.layoutManager = LinearLayoutManager(this)
         adapter = RecipesAdapter(recipeArrayList) { onItemSelected(it) }
-        binding.rvRecipesList.adapter = adapter
-        val emptyDataObserver = EmptyDataObserver(binding.rvRecipesList, findViewById<View>(R.id.emptyDataParent))
+        binding.recyclerRecipes.adapter = adapter
+        val emptyDataObserver = EmptyDataObserver(binding.recyclerRecipes, findViewById<View>(R.id.emptyDataParent))
         adapter.registerAdapterDataObserver(emptyDataObserver)
     }
 

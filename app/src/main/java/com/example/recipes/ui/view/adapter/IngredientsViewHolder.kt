@@ -10,7 +10,7 @@ class IngredientsViewHolder (inflate: View) : RecyclerView.ViewHolder(inflate) {
     private val binding = ItemIngredientsListBinding.bind(inflate)
 
     fun render(ingredient: Ingredient) {
-        binding.tvIngredient.text = ingredient.name
-        binding.tvQuantity.text = ingredient.quantity
+        binding.textIngredient.text = ingredient.name
+        binding.textQuantity.text = ingredient.quantity
     }
 }

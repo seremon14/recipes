@@ -12,9 +12,9 @@ class RecipesViewHolder(inflate: View) : RecyclerView.ViewHolder(inflate) {
     private val binding = ItemRecipeListBinding.bind(inflate)
 
     fun render(recipe: Recipe, onClickListener: (Recipe) -> Unit) {
-        binding.tvTitle.text = recipe.name
-        binding.tvDescription.text = recipe.description
-        binding.ivImage.loadImage(recipe.image)
+        binding.textTitle.text = recipe.name
+        binding.textDescription.text = recipe.description
+        binding.imageRecipe.loadImage(recipe.image)
         itemView.setOnClickListener { onClickListener(recipe) }
     }
 }

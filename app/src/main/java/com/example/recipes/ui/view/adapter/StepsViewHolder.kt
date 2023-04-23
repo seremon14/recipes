@@ -11,20 +11,20 @@ class StepsViewHolder(inflate: View) : RecyclerView.ViewHolder(inflate) {
     private val binding = ItemStepsListBinding.bind(inflate)
 
     fun render(step: Step) {
-        binding.tvDescription.text = step.description
+        binding.textDescription.text = step.description
 
         if (!step.advice.isNullOrEmpty()) {
-            binding.tvAdvice.visibility = View.VISIBLE
-            binding.tvAdvice.text = step.advice
+            binding.textAdvice.visibility = View.VISIBLE
+            binding.textAdvice.text = step.advice
         } else {
-            binding.tvAdvice.visibility = View.GONE
+            binding.textAdvice.visibility = View.GONE
         }
 
         if (!step.image.isNullOrEmpty()) {
-            binding.ivImage.visibility = View.VISIBLE
-            step.image?.let { binding.ivImage.loadImage(it) }
+            binding.imageStep.visibility = View.VISIBLE
+            step.image?.let { binding.imageStep.loadImage(it) }
         } else {
-            binding.ivImage.visibility = View.GONE
+            binding.imageStep.visibility = View.GONE
         }
     }
 }

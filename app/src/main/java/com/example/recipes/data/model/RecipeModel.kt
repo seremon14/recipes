@@ -8,5 +8,6 @@ data class RecipeModel(
     @SerializedName("description") var description: String,
     @SerializedName("ingredients") var ingredients: ArrayList<IngredientModel>? = null,
     @SerializedName("steps") var steps: ArrayList<StepModel>? = null,
-    @SerializedName("location") var location: String?= null
+    @SerializedName("latitude") var latitude: String?= null,
+    @SerializedName("longitude") var longitude: String?= null
 )

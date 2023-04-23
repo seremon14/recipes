@@ -13,34 +13,45 @@
         android:paddingHorizontal="8dp">
 
         <ImageView
-            android:id="@+id/ivImage"
+            android:id="@+id/imageRecipe"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/ivName"
+            android:id="@+id/textRecipeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="24sp"
             tools:text="@string/example_name"/>
 
         <TextView
-            android:id="@+id/ivDescription"
+            android:id="@+id/textRecipeDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             tools:text="@string/example_description" />
 
+        <Button
+            android:id="@+id/buttonMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_map_pin"
+            android:drawablePadding="4dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:text="Ver en el mapa" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ingredients"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:layout_marginTop="16dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvIngredients"
+            android:id="@+id/recyclerIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"/>
@@ -49,10 +60,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/steps"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:layout_marginTop="16dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSteps"
+            android:id="@+id/recyclerSteps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp" />

@@ -7,5 +7,8 @@
     <string name="steps">Pasos</string>
     <string name="example_name">Sopa de cebolla</string>
     <string name="example_description">Descripcion de la sopa de cebolla, una delicia culinaria francesa</string>
+    <string name="example_advice">Descripcion de la sopa de cebolla, una delicia culinaria francesa</string>
+    <string name="example_ingredient">Cebollas rojas</string>
+    <string name="example_quantity">15 und.</string>
 
 </resources>
