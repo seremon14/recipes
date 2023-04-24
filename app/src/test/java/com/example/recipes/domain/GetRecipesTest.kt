@@ -1,56 +1,47 @@
 package com.example.recipes.domain
 
-import com.example.recipes.domain.model.Quote
+import com.example.recipes.data.RecipeRepository
+import com.example.recipes.domain.model.Recipe
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-internal class GetQuotesTest{
+internal class GetRecipesTest{
 
     @RelaxedMockK
-    private lateinit var quoteRepository: QuoteRepository
+    private lateinit var recipeRepository: RecipeRepository
 
-    lateinit var getQuotes: GetQuotes
+    lateinit var getRecipes: GetRecipes
 
     @Before
     fun onBefore(){
         MockKAnnotations.init(this)
-        getQuotes = GetQuotes(quoteRepository)
-    }
-
-    @Test
-    fun `When the api doest return any then get values from database`() = runBlocking{
-        //Given
-        coEvery { quoteRepository.getAllQuotesFromApi() } returns emptyList()
-
-        //When
-        getQuotes()
-
-        //Then
-        coVerify(exactly = 1) { quoteRepository.getAllQuotesFromDatabase() }
+        getRecipes = GetRecipes(recipeRepository)
     }
 
     @Test
     fun `When the api return something then get values from api`() = runBlocking{
         //Given
-        val myList = listOf<Quote>(
-            Quote("Si", "Claro")
+        val myList = listOf(
+            Recipe(
+                "Image_Url",
+                "Name",
+                "Description",
+                null,
+                null,
+                null,
+                null
+            )
         )
-        coEvery { quoteRepository.getAllQuotesFromApi() } returns myList
+        coEvery { recipeRepository.getAllRecipesFromApi() } returns myList
 
         //When
-        val response = getQuotes()
+        val response = getRecipes()
 
         //Then
-        coVerify(exactly = 1) { quoteRepository.clearQuotes() }
-        coVerify(exactly = 1) { quoteRepository.insertQuotes(any()) }
-        coVerify(exactly = 0) { quoteRepository.getAllQuotesFromDatabase() }
         assert(myList == response)
     }
-
-
 }

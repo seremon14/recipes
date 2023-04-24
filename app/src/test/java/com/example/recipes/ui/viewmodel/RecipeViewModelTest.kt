@@ -1,7 +1,8 @@
 package com.example.recipes.ui.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.recipes.domain.model.Quote
+import com.example.recipes.domain.GetRecipes
+import com.example.recipes.domain.model.Recipe
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.RelaxedMockK
@@ -16,15 +17,12 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-internal class QuoteViewModelTest {
+internal class RecipeViewModelTest {
 
     @RelaxedMockK
-    private lateinit var getQuotesUseCase: GetQuotes
+    private lateinit var getRecipesUseCase: GetRecipes
 
-    @RelaxedMockK
-    private lateinit var getRandomQuoteUseCase: GetRandomQuote
-
-    private lateinit var quoteViewModel: QuoteViewModel
+    private lateinit var recipeViewModel: RecipeViewModel
 
     @get:Rule
     var rule: InstantTaskExecutorRule = InstantTaskExecutorRule()
@@ -32,7 +30,7 @@ internal class QuoteViewModelTest {
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        quoteViewModel = QuoteViewModel(getQuotesUseCase, getRandomQuoteUseCase)
+        recipeViewModel = RecipeViewModel(getRecipesUseCase)
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
 
@@ -42,43 +40,32 @@ internal class QuoteViewModelTest {
     }
 
     @Test
-    fun `when randomQuoteUseCase return a quote set on the livedata`() = runTest {
-        //Given
-        val quote = Quote("Oliwis", "Sebas")
-        coEvery { getRandomQuoteUseCase() } returns quote
-
-        //When
-        quoteViewModel.randomQuote()
-
-        //Then
-        assert(quoteViewModel.quoteModel.value == quote)
-    }
-
-    @Test
-    fun `if randomQuoteUseCase return null keep the last value`() = runTest {
-        //Given
-        val quote = Quote("Oli", "Sebaa")
-        quoteViewModel.quoteModel.value = quote
-        coEvery { getRandomQuoteUseCase() } returns null
-
-        //When
-        quoteViewModel.randomQuote()
-
-        //Then
-        assert(quoteViewModel.quoteModel.value == quote)
-    }
-
-    @Test
-    fun `when viewmodel is created at the first time, get all quotes and set the first value`() =
+    fun `when viewmodel is created at the first time, get all recipes and set the first value`() =
         runTest {
             //Given
-            val quoteList = listOf(Quote("Holi", "Sebas"), Quote("Chauuu", "Sebaaa"))
-            coEvery { getQuotesUseCase() } returns quoteList
+            val recipeList = listOf(Recipe(
+                "Image_Url 1",
+                "Name 1",
+                "Description 1",
+                null,
+                null,
+                null,
+                null
+            ), Recipe(
+                "Image_Url 2",
+                "Name 2",
+                "Description 2",
+                null,
+                null,
+                null,
+                null
+            ))
+            coEvery { getRecipesUseCase() } returns recipeList
 
             //When
-            quoteViewModel.onCreate()
+            recipeViewModel.onCreate()
 
             //Then
-            assert(quoteViewModel.quoteModel.value == quoteList.first())
+            assert(recipeViewModel.recipeModel.value?.first() == recipeList.first())
         }
 }
